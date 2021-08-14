@@ -7,7 +7,6 @@
     "require": {
         "php": ">=7.3.0",
         "symfony/yaml": "^3.4|^4.2|^5.0",
-        "commerceguys/intl": "^1.0",
         "twig/twig": "^2.4|^3.0"
     },
     "autoload": {
