@@ -6,8 +6,11 @@ use Symfony\Component\Yaml\Yaml;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use Parisek\Twig\TransTokenParser;
 
 final class CommonExtension extends AbstractExtension {
+
+  public $uniqueIds = [];
 
   public function getFunctions()  {
     return [
@@ -28,10 +31,16 @@ final class CommonExtension extends AbstractExtension {
           'html'
         ]
       ]),
-      new TwigFilter('format_price', [
+      new TwigFilter('t', [
         $this,
-        'formatPrice'
+        'trans'
       ]),
+    ];
+  }
+
+  public function getTokenParsers() {
+    return [
+      new TransTokenParser()
     ];
   }
 
@@ -53,5 +62,9 @@ final class CommonExtension extends AbstractExtension {
 
   public function yamlParse($content) {
     return Yaml::parse($content);
+  }
+
+  public function trans($content) {
+    return $content;
   }
 }
