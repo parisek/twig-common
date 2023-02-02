@@ -12,7 +12,7 @@ final class CommonExtension extends AbstractExtension {
 
   public $uniqueIds = [];
 
-  public function getFunctions()  {
+  public function getFunctions() {
     return [
       new TwigFunction('uniqueId', [
         $this,
