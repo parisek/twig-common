@@ -47,12 +47,13 @@ final class CommonExtension extends AbstractExtension {
   public function getUniqueId() {
 
     // generate a random string
-    $id = bin2hex(random_bytes(3));
+    // prefix with random letter as HTML id cannot start with number
+    $id = chr(rand(97,122)) . bin2hex(random_bytes(3));
 
     // check if it's already set
     while (in_array($id, $this->uniqueIds, true)) {
       // if so, use another one
-      $id = bin2hex(random_bytes(3));
+      $id = chr(rand(97,122)) . bin2hex(random_bytes(3));
     }
     // set it as "used"
     $this->uniqueIds[] = $id;
